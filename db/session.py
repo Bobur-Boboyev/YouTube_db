@@ -11,7 +11,7 @@ engine = create_engine(
         port=settings.DB_PORT,
         username=settings.DB_USER,
         password=settings.DB_PASSWORD,
-        database=settings.DB_NAME
+        database=settings.DB_NAME,
     )
 )
 
