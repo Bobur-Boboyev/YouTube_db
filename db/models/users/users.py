@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Integer, Boolean, TIMESTAMP, func
 
 from ..base import Base, TimestampMixin
@@ -29,3 +29,5 @@ class User(Base, TimestampMixin):
     )
     deleted_at: Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
     email_verified_at = Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
+
+    profile: Mapped["UserProfile"] = relationship("UserProfile", back_populates="user")
