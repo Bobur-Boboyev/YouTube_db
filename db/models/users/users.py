@@ -34,3 +34,9 @@ class User(Base, TimestampMixin):
     channels: Mapped[list["Channel"]] = relationship(
         "Channel", uselist=True, back_populates="user"
     )
+    subscribed_channels: Mapped[list["Channel"]] = relationship(
+        "Channel",
+        secondary="channel_subscribers",
+        uselist=True,
+        back_populates="subscribers",
+    )

@@ -24,9 +24,9 @@ class UserSocialLink(Base, TimestampMixin):
         ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )
-    platform: Mapped[SocialPlatformEnum] = mapped_column(
+    platform: Mapped[UserSocialPlatformEnum] = mapped_column(
         Enum(
-            SocialPlatformEnum,
+            UserSocialPlatformEnum,
             name="user_social_platform_enum",
             create_constraint=True,
             validate_strings=True,

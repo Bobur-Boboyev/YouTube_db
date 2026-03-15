@@ -28,3 +28,10 @@ class Channel(Base, TimestampMixin):
         back_populates="channels",
         lazy="selectin",
     )
+    subscribers: Mapped[list["User"]] = relationship(
+        "User",
+        secondary="channel_subscribers",
+        uselist=True,
+        back_populates="subscribed_channels",
+        lazy="selectin",
+    )
