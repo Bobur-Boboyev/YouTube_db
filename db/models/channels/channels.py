@@ -35,3 +35,9 @@ class Channel(Base, TimestampMixin):
         back_populates="subscribed_channels",
         lazy="selectin",
     )
+    statistics: Mapped["ChannelStatistics"] = relationship(
+        "ChannelStatistics",
+        back_populates="channel",
+        uselist=False,
+        cascade="all, delete-orphan"
+    )

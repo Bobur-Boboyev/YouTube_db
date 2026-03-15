@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Integer, ForeignKey, Boolean, UniqueConstraint
 
 from ..base import Base, TimestampMixin
