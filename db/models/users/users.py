@@ -34,3 +34,6 @@ class User(Base, TimestampMixin):
     social_links: Mapped["UserSocialLink"] = relationship(
         "UserSocialLink", back_populates="user"
     )
+    channels: Mapped[list["Channel"]] = relationship(
+        "Channel", uselist=True, back_populates="user"
+    )
