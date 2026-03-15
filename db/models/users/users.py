@@ -31,9 +31,6 @@ class User(Base, TimestampMixin):
     email_verified_at = Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
 
     profile: Mapped["UserProfile"] = relationship("UserProfile", back_populates="user")
-    social_links: Mapped["UserSocialLink"] = relationship(
-        "UserSocialLink", back_populates="user"
-    )
     channels: Mapped[list["Channel"]] = relationship(
         "Channel", uselist=True, back_populates="user"
     )

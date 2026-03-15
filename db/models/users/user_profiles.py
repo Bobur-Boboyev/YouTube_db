@@ -36,4 +36,9 @@ class UserProfile(Base, TimestampMixin):
     )
     location: Mapped[str] = mapped_column(String(120), nullable=True)
 
-    user: Mapped["User"] = relationship("User", back_populates="profile")
+    user: Mapped["User"] = relationship(
+        "User", back_populates="profile", lazy="selectin"
+    )
+    social_links: Mapped["UserSocialLink"] = relationship(
+        "UserSocialLink", back_populates="user_profile", lazy="selectin"
+    )
