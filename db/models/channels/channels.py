@@ -41,3 +41,4 @@ class Channel(Base, TimestampMixin):
         uselist=False,
         cascade="all, delete-orphan"
     )
+    videos: Mapped["Video"] = relationship("Video", back_populates="channel")
