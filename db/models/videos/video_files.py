@@ -12,7 +12,10 @@ class VideoFormat(str, enum.Enum):
 
 
 class VideoResolution(str, enum.Enum):
+    P120 = "120p"
+    P240 = "240p"
     P360 = "360p"
+    P480 = "480p"
     P720 = "720p"
     P1080 = "1080p"
 

@@ -82,3 +82,6 @@ class Video(Base, TimestampMixin):
     files: Mapped[list["VideoFile"]] = relationship(
         "VideoFile", back_populates="video", cascade="all, delete-orphan"
     )
+    thumbnails: Mapped[list["VideoThumbnail"]] = relationship(
+        "VideoThumbnail", back_populates="video", cascade="all, delete-orphan"
+    )
