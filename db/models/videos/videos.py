@@ -83,6 +83,11 @@ class Video(Base, TimestampMixin):
         "VideoFile", back_populates="video", cascade="all, delete-orphan", uselist=True
     )
     thumbnails: Mapped[list["VideoThumbnail"]] = relationship(
-        "VideoThumbnail", back_populates="video", cascade="all, delete-orphan", uselist=True
+        "VideoThumbnail",
+        back_populates="video",
+        cascade="all, delete-orphan",
+        uselist=True,
     )
-    tags: Mapped[list["Tag"]] = relationship("Tag", secondary="video_tags", back_populates="videos", uselist=True)
+    tags: Mapped[list["Tag"]] = relationship(
+        "Tag", secondary="video_tags", back_populates="videos", uselist=True
+    )

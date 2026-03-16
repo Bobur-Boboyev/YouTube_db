@@ -11,4 +11,6 @@ class Tag(Base, TimestampMixin):
     name: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     slug: Mapped[str] = mapped_column(String(200), unique=True, nullable=False)
 
-    videos: Mapped[list["Video"]] = relationship("Video", secondary="video_tags", uselist=True, back_populates="tags")
+    videos: Mapped[list["Video"]] = relationship(
+        "Video", secondary="video_tags", uselist=True, back_populates="tags"
+    )
