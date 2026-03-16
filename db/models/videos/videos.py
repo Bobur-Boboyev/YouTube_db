@@ -80,8 +80,9 @@ class Video(Base, TimestampMixin):
     channel: Mapped["Channel"] = relationship("Channel", back_populates="videos")
     category: Mapped["Category"] = relationship("Category", back_populates="videos")
     files: Mapped[list["VideoFile"]] = relationship(
-        "VideoFile", back_populates="video", cascade="all, delete-orphan"
+        "VideoFile", back_populates="video", cascade="all, delete-orphan", uselist=True
     )
     thumbnails: Mapped[list["VideoThumbnail"]] = relationship(
-        "VideoThumbnail", back_populates="video", cascade="all, delete-orphan"
+        "VideoThumbnail", back_populates="video", cascade="all, delete-orphan", uselist=True
     )
+    tags: Mapped[list["Tag"]] = relationship("Tag", secondary="video_tags", back_populates="videos", uselist=True)
