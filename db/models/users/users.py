@@ -40,3 +40,6 @@ class User(Base, TimestampMixin):
         uselist=True,
         back_populates="subscribers",
     )
+    reactions: Mapped[list["VideoReaction"]] = relationship(
+        "VideoReaction", uselist=True, back_populates="user"
+    )
