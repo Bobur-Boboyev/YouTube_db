@@ -91,6 +91,6 @@ class Video(Base, TimestampMixin):
     tags: Mapped[list["Tag"]] = relationship(
         "Tag", secondary="video_tags", back_populates="videos", uselist=True
     )
-    user_reactions: Mapped[list["User"]] = relationship(
-        "User", secondary="video_reactions", back_populates="video_reactions"
+    reactions: Mapped[list["VideoReaction"]] = relationship(
+        "VideoReaction", uselist=True, back_populates="video"
     )
