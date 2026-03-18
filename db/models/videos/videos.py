@@ -94,3 +94,7 @@ class Video(Base, TimestampMixin):
     reactions: Mapped[list["VideoReaction"]] = relationship(
         "VideoReaction", uselist=True, back_populates="video"
     )
+    watch_history: Mapped[list["WatchHistory"]] = relationship(
+        "WatchHistory", back_populates="video", cascade="all, delete-orphan"
+    )
+    views: Mapped[list["VideoView"]] = relationship("VideoView", back_populates="video")

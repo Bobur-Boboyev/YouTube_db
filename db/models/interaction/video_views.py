@@ -13,7 +13,6 @@ from sqlalchemy import (
 from ..base import Base
 
 
-
 class VideoView(Base):
     __tablename__ = "video_views"
 
@@ -28,16 +27,12 @@ class VideoView(Base):
         nullable=True,
         index=True,
     )
-    watch_time_seconds: Mapped[int] = mapped_column(
-        Integer, nullable=False, default=0
-    )
-    completed: Mapped[bool] = mapped_column(
-        Boolean, nullable=False, default=False
-    )
+    watch_time_seconds: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    completed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     created_at: Mapped[datetime] = mapped_column(
         TIMESTAMP, nullable=False, default=datetime.utcnow, index=True
     )
-    
+
     video = relationship("Video")
     user = relationship("User")
 
