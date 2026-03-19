@@ -9,16 +9,13 @@ class Comment(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     parent_id: Mapped[int | None] = mapped_column(
-        ForeignKey("comments.id", ondelete="CASCADE"),
-        nullable=True
+        ForeignKey("comments.id", ondelete="CASCADE"), nullable=True
     )
     user_id: Mapped[int] = mapped_column(
-        ForeignKey("users.id", ondelete="CASCADE"),
-        nullable=False
+        ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
     video_id: Mapped[int] = mapped_column(
-        ForeignKey("videos.id", ondelete="CASCADE"),
-        nullable=False
+        ForeignKey("videos.id", ondelete="CASCADE"), nullable=False
     )
     content: Mapped[str] = mapped_column(Text, nullable=False)
     likes_count: Mapped[int] = mapped_column(Integer, default=0)
@@ -26,25 +23,17 @@ class Comment(Base, TimestampMixin):
     is_pinned: Mapped[bool] = mapped_column(Boolean, default=False)
     is_edited: Mapped[bool] = mapped_column(Boolean, default=False)
 
-    video: Mapped["Video"] = relationship(
-        "Video",
-        back_populates="comments"
-    )
-    user: Mapped["User"] = relationship(
-        "User",
-        back_populates="comments"
-    )
+    video: Mapped["Video"] = relationship("Video", back_populates="comments")
+    user: Mapped["User"] = relationship("User", back_populates="comments")
     parent: Mapped["Comment"] = relationship(
-        "Comment",
-        remote_side="Comment.id",
-        back_populates="replies"
+        "Comment", remote_side="Comment.id", back_populates="replies"
     )
     replies: Mapped[list["Comment"]] = relationship(
-        "Comment",
-        back_populates="parent",
-        cascade="all, delete-orphan"
+        "Comment", back_populates="parent", cascade="all, delete-orphan"
     )
-    
+    reactions: Mapped[list["CommentReaction"]] = relationship(
+        "CommentReaction", back_populates="comment", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (
         Index("ix_comments_video_id", "video_id"),

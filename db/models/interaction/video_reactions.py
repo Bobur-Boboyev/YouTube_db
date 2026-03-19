@@ -6,7 +6,7 @@ from sqlalchemy import Integer, ForeignKey, Enum, UniqueConstraint, Index
 from ..base import Base, TimestampMixin
 
 
-class TypeReaction(str, enum.Enum):
+class VideoTypeReaction(str, enum.Enum):
     LIKE = "like"
     DISLIKE = "dislike"
 
@@ -27,10 +27,10 @@ class VideoReaction(Base, TimestampMixin):
     user_id: Mapped[int] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
-    type_reaction: Mapped[TypeReaction] = mapped_column(
+    type_reaction: Mapped[VideoTypeReaction] = mapped_column(
         Enum(
-            TypeReaction,
-            name="type_reaction_enum",
+            VideoTypeReaction,
+            name="video_type_reaction_enum",
             create_constraint=True,
             validate_strings=True,
         ),

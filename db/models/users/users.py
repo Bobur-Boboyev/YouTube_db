@@ -53,3 +53,6 @@ class User(Base, TimestampMixin):
     comments: Mapped[list["Comment"]] = relationship(
         "Comment", back_populates="user", uselist=True
     )
+    comment_reactions: Mapped[list["CommentReaction"]] = relationship(
+        "CommentReaction", back_populates="user"
+    )
