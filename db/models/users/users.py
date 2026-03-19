@@ -50,3 +50,6 @@ class User(Base, TimestampMixin):
     watch_laters: Mapped[list["WatchLater"]] = relationship(
         "WatchLater", back_populates="user", cascade="all, delete-orphan"
     )
+    comments: Mapped[list["Comment"]] = relationship(
+        "Comment", back_populates="user", uselist=True
+    )

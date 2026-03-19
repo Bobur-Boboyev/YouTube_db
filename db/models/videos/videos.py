@@ -99,5 +99,8 @@ class Video(Base, TimestampMixin):
     )
     views: Mapped[list["VideoView"]] = relationship("VideoView", back_populates="video")
     watch_laters: Mapped[list["WatchLater"]] = relationship(
-        "WatchLater", back_populates="video", cascade="all, delete-orphan"
+        "WatchLater", back_populates="video", cascade="all, delete-orphan", uselist=True
+    )
+    comments: Mapped[list["Comment"]] = relationship(
+        "Comment", back_populates="video", cascade="all, delete-orphan", uselist=True
     )
