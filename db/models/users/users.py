@@ -59,3 +59,4 @@ class User(Base, TimestampMixin):
     notification_settings: Mapped["NotificationSetting"] = relationship(
         "NotificationSetting", back_populates="user"
     )
+    playlists: Mapped["Playlist"] = relationship("Playlist", back_populates="user")
