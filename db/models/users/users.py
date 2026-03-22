@@ -56,3 +56,6 @@ class User(Base, TimestampMixin):
     comment_reactions: Mapped[list["CommentReaction"]] = relationship(
         "CommentReaction", back_populates="user"
     )
+    notification_settings: Mapped["NotificationSetting"] = relationship(
+        "NotificationSetting", back_populates="user"
+    )
