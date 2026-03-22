@@ -1,8 +1,4 @@
-from sqlalchemy import (
-    BigInteger,
-    ForeignKey,
-    UniqueConstraint
-)
+from sqlalchemy import BigInteger, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..base import Base, TimestampMixin
@@ -24,11 +20,7 @@ class PlaylistFollower(Base, TimestampMixin):
     )
 
     __table_args__ = (
-        UniqueConstraint(
-            "playlist_id",
-            "user_id",
-            name="uq_playlist_follower"
-        ),
+        UniqueConstraint("playlist_id", "user_id", name="uq_playlist_follower"),
     )
 
     playlist = relationship("Playlist", back_populates="followers")
