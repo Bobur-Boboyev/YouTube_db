@@ -13,12 +13,6 @@ class SearchType(str, enum.Enum):
     PLAYLIST = "playlist"
 
 
-class SearchEntityType(str, enum.Enum):
-    VIDEO = "video"
-    CHANNEL = "channel"
-    PLAYLIST = "playlist"
-
-
 class SearchQuery(Base, TimestampMixin):
     __tablename__ = "search_queries"
 
