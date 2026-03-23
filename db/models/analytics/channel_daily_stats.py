@@ -32,6 +32,6 @@ class ChannelDailyStats(Base, TimestampMixin):
     comments_count: Mapped[int] = mapped_column(BigInteger, default=0)
     shares_count: Mapped[int] = mapped_column(BigInteger, default=0)
 
-    __table_args__ = (UniqueConstraint("channel_id", "date", name="uq_channel_date"),)
+    __table_args__ = (UniqueConstraint("channel_id", "date_", name="uq_channel_date"),)
 
     channel = relationship("Channel")

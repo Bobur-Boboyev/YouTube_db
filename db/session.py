@@ -1,4 +1,4 @@
-from sqlalchemy.orm import create_session
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, URL
 
 from config import settings
@@ -15,4 +15,4 @@ engine = create_engine(
     )
 )
 
-SessionLocal = create_session(bind=engine)
+SessionLocal = sessionmaker(bind=engine)

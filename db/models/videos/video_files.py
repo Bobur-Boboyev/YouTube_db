@@ -50,8 +50,8 @@ class VideoFile(Base, TimestampMixin):
     file_size: Mapped[int] = mapped_column(BigInteger, nullable=False)
     storage_path: Mapped[str] = mapped_column(String, nullable=False)
 
-    __table_args__ = UniqueConstraint(
+    __table_args__ = (UniqueConstraint(
         "video_id", "format", "resolution", name="unique_video"
-    )
+    ), )
 
     video: Mapped["Video"] = relationship("Video", back_populates="files")

@@ -4,8 +4,8 @@ from sqlalchemy import String, Integer
 from ..base import Base, TimestampMixin
 
 
-class Category(Base, TimestampMixin):
-    __tablename__ = "categories"
+class ChannelCategory(Base, TimestampMixin):
+    __tablename__ = "channel_category"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True, nullable=False)

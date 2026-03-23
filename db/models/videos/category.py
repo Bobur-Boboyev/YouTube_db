@@ -4,7 +4,7 @@ from sqlalchemy import String
 from ..base import Base
 
 
-class Category(Base):
+class VideoCategory(Base):
     __tablename__ = "categories"
 
     id: Mapped[int] = mapped_column(primary_key=True)

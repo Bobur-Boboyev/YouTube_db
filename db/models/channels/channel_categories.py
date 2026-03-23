@@ -12,7 +12,7 @@ class ChannelCategories(Base, TimestampMixin):
         ForeignKey("channels.id", ondelete="CASCADE"), nullable=False
     )
     category_id: Mapped[int] = mapped_column(
-        ForeignKey("categories.id", ondelete="CASCADE"), nullable=False
+        ForeignKey("channel_category.id", ondelete="CASCADE"), nullable=False
     )
 
-    __table_args__ = UniqueConstraint("channel_id", "category_id")
+    __table_args__ = (UniqueConstraint("channel_id", "category_id"), )

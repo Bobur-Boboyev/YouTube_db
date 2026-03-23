@@ -18,4 +18,4 @@ class ChannelSubscriber(Base, TimestampMixin):
         Boolean, nullable=False, default=False
     )
 
-    __table_args__ = UniqueConstraint("channel_id", "user_id")
+    __table_args__ = (UniqueConstraint("channel_id", "user_id"), )

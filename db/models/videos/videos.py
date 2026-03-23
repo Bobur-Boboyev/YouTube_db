@@ -66,7 +66,7 @@ class Video(Base, TimestampMixin):
     duration_seconds: Mapped[int] = mapped_column(Integer, nullable=False)
     language: Mapped[str] = mapped_column(String(10), nullable=False)
     category_id: Mapped[int] = mapped_column(
-        ForeignKey("categories.id", ondelete="CASCADE"), nullable=False
+        ForeignKey("video_categories.id", ondelete="CASCADE"), nullable=False
     )
     published_at: Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
 
@@ -78,7 +78,7 @@ class Video(Base, TimestampMixin):
     )
 
     channel: Mapped["Channel"] = relationship("Channel", back_populates="videos")
-    category: Mapped["Category"] = relationship("Category", back_populates="videos")
+    category: Mapped["VideoCategory"] = relationship("VideoCategory", back_populates="videos")
     files: Mapped[list["VideoFile"]] = relationship(
         "VideoFile", back_populates="video", cascade="all, delete-orphan", uselist=True
     )

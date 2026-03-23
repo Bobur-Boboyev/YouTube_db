@@ -11,7 +11,6 @@ class ChannelStatistics(Base, TimestampMixin):
     channel_id: Mapped[int] = mapped_column(
         ForeignKey("channels.id", ondelete="CASCADE"), unique=True, nullable=False
     )
-
     total_subscribers: Mapped[int] = mapped_column(
         BigInteger, default=0, nullable=False
     )

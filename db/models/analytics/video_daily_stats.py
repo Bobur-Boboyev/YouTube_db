@@ -31,6 +31,6 @@ class VideoDailyStats(Base, TimestampMixin):
     average_watch_duration: Mapped[int] = mapped_column(BigInteger, default=0)
     completion_rate: Mapped[float] = mapped_column(default=0.0)
 
-    __table_args__ = (UniqueConstraint("video_id", "date", name="uq_video_date"),)
+    __table_args__ = (UniqueConstraint("video_id", "date_", name="uq_video_date"),)
 
     video = relationship("Video")

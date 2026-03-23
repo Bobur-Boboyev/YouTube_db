@@ -21,7 +21,7 @@ class ChannelSocialLink(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     channel_id: Mapped[int] = mapped_column(
-        ForeignKey("channel.id", ondelete="CASCADE"),
+        ForeignKey("channels.id", ondelete="CASCADE"),
         nullable=False,
     )
     platform: Mapped[ChannelSocialPlatformEnum] = mapped_column(

@@ -28,7 +28,7 @@ class User(Base, TimestampMixin):
         Boolean, default=False, nullable=False
     )
     deleted_at: Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
-    email_verified_at = Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
+    email_verified_at: Mapped[datetime] = mapped_column(TIMESTAMP, nullable=True)
 
     profile: Mapped["UserProfile"] = relationship("UserProfile", back_populates="user")
     channels: Mapped[list["Channel"]] = relationship(
