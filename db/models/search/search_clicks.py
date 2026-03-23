@@ -1,7 +1,6 @@
-from datetime import datetime
 import enum
 
-from sqlalchemy import Integer, Enum, TIMESTAMP, ForeignKey
+from sqlalchemy import Integer, Enum, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..base import Base, TimestampMixin
@@ -37,11 +36,6 @@ class SearchClick(Base, TimestampMixin):
         index=True,
     )
     position: Mapped[int] = mapped_column(nullable=False)
-    clicked_at: Mapped[datetime] = mapped_column(
-        TIMESTAMP,
-        default=datetime.utcnow,
-        index=True,
-    )
 
     query = relationship("SearchQuery")
     user = relationship("User")
